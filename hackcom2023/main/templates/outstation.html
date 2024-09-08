@@ -1,0 +1,50 @@
+{% extends "bg.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<link rel="stylesheet" href="{% static 'outstation.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Noto+Serif+Gujarati&family=Nunito&display=swap" rel="stylesheet">
+
+    <div class="Head">
+        <h1 style='position: absolute; top: 120px; left: 50%; transform: translateX(-50%); font-family: "SFProBold"; font-size: 2.5rem; color: "#000"' >Tag along with other commuters!</h1>
+            {% for x in data %}
+            <div class="card" id="{{x.id}}" style='position: relative;' >
+                <button class='BookBtn' onClick='alert("Ride with {{x.user.first_name}} has been booked. Please check your email for further details.")' >Book</button>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image">
+                        <img src="{% static 'dpdemo.png' %}">
+                      </figure>
+                    </div>
+                    <div class="media-content" style='transform: translateY(6px)' >
+                      <p class="title is-4">{{ x.user.first_name }}</p>
+                      <p class="subtitle is-6">{{ x.user.username }}</p>
+                    </a>
+                    </div>
+                  </div>
+                  <div class="content" style='font-size: 1.34rem; line-height: 12px; transform: translateY(15px)' >
+                    <p><b>From:</b> {{ x.start }}</p>
+                    <p><b>To:</b> {{ x.end }}</p>
+                    <p><b>Price:</b> ₹{{ x.price }}</p>
+                    <p><b>Phone:</b> {{x.phone}}</p>
+                    <p style='font-size: 1.0rem; line-height: 8px; width: 125%' ><b>Email:</b> {{x.user.email}}</p>
+                    <br>
+                    <p><b>Date:</b> {{x.date}}</p>
+                    <p><b>Time:</b> {{x.time}}</p>
+                  </div>
+                </div>
+              </div>
+
+              <script>
+                {% comment %} document.getElementById("{{x.id}}").addEventListener("click", function() {
+                  window.location.href = "/outstation/{{x.id}}";
+                }) {% endcomment %}
+              </script>
+            {% endfor %}
+            </div>
+            
+            {% endblock content %}

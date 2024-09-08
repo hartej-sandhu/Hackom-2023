@@ -1,0 +1,95 @@
+{% extends "bg.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<link rel="stylesheet" href="{% static 'outstation.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Noto+Serif+Gujarati&family=Nunito&display=swap" rel="stylesheet">
+
+    <div class="Head">
+        <h1 style='position: absolute; top: 120px; left: 50%; transform: translateX(-50%); font-family: "SFProBold"; font-size: 2.5rem; color: "#000"' >Find a Pool Partner!</h1>
+
+            <div class="card" id="{{x.id}}" style="cursor: pointer;" >
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image">
+                        <img src="{% static 'dpdemo.png' %}">
+                      </figure>
+                    </div>
+                    <div class="media-content" style='transform: translateY(6px)' >
+                      <p class="title is-4" style='transform: translateY(18px)' >Hartej Sandhu</p>
+                    </a>
+                    </div>
+                  </div>
+                  <div class="content" style='font-size: 1.34rem; line-height: 12px; transform: translateY(15px)' >
+                    <p><b>From:</b> Alkapuri</p>
+                    <p><b>To:</b> Sama</p>
+                    <p><b>Price:</b> ₹3000/month</p>
+                    <p><b>Phone:</b> 1234567890</p>
+                    <p style='font-size: 1.0rem; line-height: 8px; width: 125%' ><b>Email:</b> aadilsengupta27@gmail.com</p>
+                    <br>
+                    <p><b>Days:</b> Weekdays</p>
+                    <p><b>Time:</b> 9:00 A.m.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" id="{{x.id}}" style="cursor: pointer;" >
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image">
+                        <img src="{% static 'dpdemo.png' %}">
+                      </figure>
+                    </div>
+                    <div class="media-content" style='transform: translateY(6px)' >
+                      <p class="title is-4" style='transform: translateY(18px)' >Anvay Kemkar</p>
+                    </a>
+                    </div>
+                  </div>
+                  <div class="content" style='font-size: 1.34rem; line-height: 12px; transform: translateY(15px)' >
+                    <p><b>From:</b> Fatehgunj</p>
+                    <p><b>To:</b> Alkapuri</p>
+                    <p><b>Price:</b> ₹2500/month</p>
+                    <p><b>Phone:</b> 1234567890</p>
+                    <p style='font-size: 1.0rem; line-height: 8px; width: 125%' ><b>Email:</b> aadilsengupta27@gmail.com</p>
+                    <br>
+                    <p><b>Days:</b> Weekdays</p>
+                    <p><b>Time:</b> 10:00 A.m.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" id="{{x.id}}" style="cursor: pointer;" >
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image">
+                        <img src="{% static 'dpdemo.png' %}">
+                      </figure>
+                    </div>
+                    <div class="media-content" style='transform: translateY(6px)' >
+                      <p class="title is-4" style='transform: translateY(18px)' >Aadil Sengupta</p>
+                    </a>
+                    </div>
+                  </div>
+                  <div class="content" style='font-size: 1.34rem; line-height: 12px; transform: translateY(15px)' >
+                    <p><b>From:</b> Gotri</p>
+                    <p><b>To:</b> Sama</p>
+                    <p><b>Price:</b> ₹3000/month</p>
+                    <p><b>Phone:</b> 1234567890</p>
+                    <p style='font-size: 1.0rem; line-height: 8px; width: 125%' ><b>Email:</b> aadilsengupta27@gmail.com</p>
+                    <br>
+                    <p><b>Days:</b> Weekdays</p>
+                    <p><b>Time:</b> 10:00 A.m.</p>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+            
+            {% endblock content %}

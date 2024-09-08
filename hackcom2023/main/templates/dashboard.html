@@ -1,0 +1,38 @@
+{% extends "bg.html" %}
+
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<link rel="stylesheet" href="{% static 'dashboard.css' %}">
+    
+<div class='cardWrap' >
+    <div class='bigCard' >
+        <div class='left' >
+            <h1 class='headerTextt' style='margin-top: 47px' >Your recent route: </h1>
+
+            <p class='textSeco' style='margin-top: 20px;' >From: <span style='font-family: "SFProReg";' >Kanpur</span></p> 
+            <p class='textSeco' >To:  <span style='font-family: "SFProReg";' >Vadodara</span></p>
+
+            <p class='textSeco' style='margin-top: 20px;' >Date: <span style='font-family: "SFProReg";' >14'th Oct 2023</span></p> 
+            <p class='textSeco' >Time:  <span style='font-family: "SFProReg";' >6 P.m.</span></p>
+
+        </div>
+        <div class='right' >
+            <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d7438849.783279756!2d71.46261400235272!3d24.442079992866596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x399c4770b127c46f%3A0x1778302a9fbe7b41!2sKanpur%2C%20Uttar%20Pradesh!3m2!1d26.449923!2d80.3318736!4m5!1s0x395fc8ab91a3ddab%3A0xac39d3bfe1473fb8!2sVadodara%2C%20Gujarat!3m2!1d22.3071588!2d73.1812187!5e0!3m2!1sen!2sin!4v1697313873676!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="mappy"></iframe>
+        </div>
+    </div>
+    <div class='cardRow' >
+        <div class='smallCard' >
+                <p class='textBig' style='font-size: 8rem; margin-top: 30px' >1036.4</p>
+                <p class='textSmall' >km travelled</p>
+        </div>
+        <div class='smallCard' >
+            <p class='textBig' style='font-size: 8rem; margin-top: 30px' >15.5%</p>
+            <p class='textSmall' style='line-height: 45px; text-align: center; font-size: 2.45rem; margin-top:-23px' >reduction in carbon <br> footprint</p>
+    </div>
+</div>
+
+</div>
+
+{% endblock %}

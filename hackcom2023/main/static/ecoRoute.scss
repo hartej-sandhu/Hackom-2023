@@ -1,0 +1,26 @@
+
+#map {
+    width: 100%;
+    margin-top: 40px;
+    height: 35rem;
+    border-radius: 20px;
+    border: 3px solid black;
+  }
+
+  #instructions {
+    margin-top: 20px;
+  }
+
+  .mainy{
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .mainn{
+    margin: auto auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  

@@ -1,0 +1,101 @@
+.back {
+  position: absolute;
+  top: 1.8em;
+  left: 2em;
+  font-size: 1em;
+  width: 2em;
+  height: 2em;
+}
+
+.card {
+  height: 25em;
+  border-radius: 20px;
+  width: 20rem;
+  margin: 0 1.4em;
+  border-color: #00d1b2;
+  border-width: 2.6px;
+  border-style: solid;
+}
+
+.Head {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  padding: 7.5vw 3vw;
+  padding-top: 15.5em;
+  display: flex;
+}
+
+.img {
+  height: 100%;
+  width: 100%;
+}
+
+.crdupper {
+  display: grid;
+  grid-template-columns: auto 90%;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+.nm {
+  height: 100%;
+  width: 80%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.nm {
+  font-size: 1.3rem;
+  font-family: "Nunito", sans-serif;
+}
+
+.crd {
+  display: grid;
+  width: 20vw;
+  height: 20vw;
+  margin-bottom: 5vw;
+  border-radius: 3%;
+  box-shadow: 0px 0px 120px -30px rgba(0, 0, 0, 0.75);
+  transition: box-shadow 0.2s linear;
+  grid-template-rows: auto 80%;
+  padding: 5vw 5vh;
+  align-items: center;
+}
+
+.crd:hover {
+  box-shadow: 0px 0px 120px -10px rgba(0, 0, 0, 0.75);
+  transition: box-shadow 0.2s linear;
+}
+
+.image {
+  width: 85px;
+  height: 85px;
+}
+
+.BookBtn {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  position: absolute;
+  right: 20px;
+  top: 102px;
+  background-color: #00d1b2;
+  color: #fff;
+  font-size: 1.2rem;
+  font-family: "Nunito", sans-serif;
+  transition: all 0.3s;
+  cursor: pointer;
+  z-index: 80;
+}
+
+@media only screen and (height: 667px) {
+  .Head {
+    transform: translateY(10vh);
+  }
+}/*# sourceMappingURL=outstation.css.map */

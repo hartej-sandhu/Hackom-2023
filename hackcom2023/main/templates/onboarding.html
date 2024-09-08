@@ -1,0 +1,203 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<link rel="stylesheet" href="{% static 'onboarding.css' %}">
+
+<style>
+.hidden {
+  display: none;
+}
+.InputContainer {
+  margin-top: 10px;
+  text-align: center;
+}
+#suggestions {
+  width: 308px;
+  margin: auto;
+  text-align: left;
+  border: 1px solid black;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #eee;
+}
+
+body{
+  background-image: url({% static 'bg.png' %});
+}
+@font-face {
+  font-family: SFProBold;
+  src: url("{% static 'fonts/SFProBold.otf' %}");
+}
+@font-face {
+  font-family: SFProReg;
+  src: url("{% static 'fonts/SFProRegular.otf' %}");
+}
+@font-face {
+  font-family: SFProThin;
+  src: url("{% static 'fonts/SFProThin.otf' %}");
+}
+</style>
+
+<div class="containerWrap" >
+
+    <div class="questWrap" id="Q1"  >
+            <h1 class="questTitle" >Do you commute to work regularly?</h1>
+        <div class="questContent">
+            <button class="radio" onClick="document.getElementById('yes1').classList.add('selected')" id="yes1" >
+                Yes
+            </button>
+            <div class="radio" >
+                No
+            </div>
+        </div>
+        <div class="questButton">
+            <button class="btn" onclick="nextQuest()">Next</button>
+        </div>
+    </div>
+    <div class="questWrap" id="Q2" style="display: none; width: 900px"  >
+        <h1 class="questTitle" >Set your Home location</h1>
+    <div class="questContent">
+      <div style='display: flex;' >
+        <div class="InputContainer"  >
+            <input class='textInput' type="text" id="addressInput" placeholder="Line 1" autocomplete="off" />
+            <div id="suggestions" class="hidden"></div>
+        </div>
+    </div>
+    <div class="InputContainer">
+      <input class='textInput' type="text" id="addressInput" placeholder="Line 2" autocomplete="off" />
+      <div id="suggestions" class="hidden"></div>
+  </div>
+  <div style='display: flex;' >
+    <div class="InputContainer"  >
+        <input class='textInput' type="text" id="addressInput" placeholder="Pincode" autocomplete="off" />
+        <div id="suggestions" class="hidden"></div>
+    </div>
+    <div class="InputContainer"  >
+      <input class='textInput' type="text" id="addressInput" placeholder="City" autocomplete="off" />
+      <div id="suggestions" class="hidden"></div>
+  </div>
+
+  </div>
+    </div>
+    <div class="questButton">
+        <button class="btn" onclick="backQuest()">Back</button>
+        <button class="btn" onclick="nextQuest()">Next</button>
+    </div>
+</div>
+<div class="questWrap" id="Q3" style="display: none; width: 900px"  >
+  <h1 class="questTitle" >Set your Work location</h1>
+<div class="questContent">
+<div style='display: flex;' >
+  <div class="InputContainer"  >
+      <input class='textInput' type="text" id="addressInput" placeholder="Line 1" autocomplete="off" />
+      <div id="suggestions" class="hidden"></div>
+  </div>
+</div>
+<div class="InputContainer">
+<input class='textInput' type="text" id="addressInput" placeholder="Line 2" autocomplete="off" />
+<div id="suggestions" class="hidden"></div>
+</div>
+<div style='display: flex;' >
+<div class="InputContainer"  >
+  <input class='textInput' type="text" id="addressInput" placeholder="Pincode" autocomplete="off" />
+  <div id="suggestions" class="hidden"></div>
+</div>
+<div class="InputContainer"  >
+<input class='textInput' type="text" id="addressInput" placeholder="City" autocomplete="off" />
+<div id="suggestions" class="hidden"></div>
+</div>
+
+</div>
+</div>
+<div class="questButton">
+  <button class="btn" onclick="backQuest()">Back</button>
+  <button class="btn" onclick="nextQuest()">Next</button>
+</div>
+</div>
+<div class="questWrap" id="Q4" style="display: none;"  >
+    <h1 class="questTitle" style='font-size: 3.5rem' >Welcome to <br> <span style='color: #00d1b2; font-family: "SFProBold"'>Co-Commute</span>!</h1>
+
+<div class="questButton">
+    <button class="btn" onclick="window.location.replace('/dashboard')">Get Started</button>
+</div>
+</div>
+
+</div>
+  <script>
+    
+  </script>
+<script>
+    var quest = 1;
+    function nextQuest(){
+        quest+=1;
+        document.getElementById("Q"+quest).style.display = "block";
+        document.getElementById("Q"+(quest-1)).style.display = "none";
+    }
+    function backQuest(){
+        quest--;
+        document.getElementById("Q"+quest).style.display = "block";
+        document.getElementById("Q"+(quest+1)).style.display = "none";
+    }
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const addressInput = document.getElementById('addressInput');
+  const suggestionsDiv = document.getElementById('suggestions');
+
+  // Mock API request to fetch addresses based on query
+  async function fetchAddresses(query) {
+    // Simulating an API call. Replace this with an actual API call.
+    const allAddresses = [
+      '123 Main St',
+      '456 Elm St',
+      '789 Oak St',
+      '101 Maple Ave'
+    ];
+    return allAddresses.filter(address => address.toLowerCase().includes(query.toLowerCase()));
+  }
+
+  // Show suggestions
+  async function showSuggestions(query) {
+    const addresses = await fetchAddresses(query);
+    suggestionsDiv.innerHTML = '';
+    addresses.forEach(address => {
+      const div = document.createElement('div');
+      div.className = 'suggestion-item';
+      div.textContent = address;
+      div.addEventListener('click', () => {
+        addressInput.value = address;
+        suggestionsDiv.classList.add('hidden');
+      });
+      suggestionsDiv.appendChild(div);
+    });
+    suggestionsDiv.classList.remove('hidden');
+  }
+
+  // Event listener for the input
+  addressInput.addEventListener('input', async (e) => {
+    const query = e.target.value;
+    if (query.length >= 3) { // Show suggestions if query has 3 or more characters
+      await showSuggestions(query);
+    } else {
+      suggestionsDiv.classList.add('hidden');
+    }
+  });
+});
+
+</script>
+</html>
+
+

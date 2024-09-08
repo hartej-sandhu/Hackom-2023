@@ -1,0 +1,86 @@
+body{
+  height: 120vh;
+}
+
+.cardWrap{
+  width: 80%;
+  height: 95vh;
+  margin: auto auto;
+  padding-top: 140px;
+}
+
+.headerTextt{
+  font-family: 'SFProBold';
+  font-size: 1.52rem;
+  margin-top: 18px;
+  margin-left: 25px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.textSeco{
+  font-family: 'SFProBold';
+  font-size: 1.4rem;
+  margin-left: 25px;
+  margin-top: -0.5em;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+
+.bigCard{
+  width: 100%;
+  height: 310px;
+  border-radius: 15px;
+  background-color: #eaf9f5;  
+  display: flex;
+    -webkit-box-shadow: 0px 6px 72px -14px rgba(0,0,0,0.35);
+    -moz-box-shadow: 0px 6px 72px -14px rgba(0,0,0,0.35);
+    box-shadow: 0px 6px 72px -14px rgba(0,0,0,0.35);
+  div{
+    height: 100%;
+  }
+  .left{
+    width: 35%;
+  }
+  .right{
+    width: 65%;
+    overflow: none;
+    .mappy{
+      width: 100%;
+      height: 100%;
+      border-radius: 0px 15px 15px 0px;
+    }
+  }
+}
+
+.cardRow{
+  width: 100%;
+  height: 310px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  .smallCard{
+    width: 48.8%;
+    height: 100%;
+    border-radius: 12px;
+    -webkit-box-shadow: 0px 6px 72px -14px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 6px 72px -14px rgba(0,0,0,0.15);
+    box-shadow: 0px 6px 72px -14px rgba(0,0,0,0.15);
+    background-color: #eaf9f5;  
+    display: flex;
+    flex-direction: column;
+    justify-content: cewnter;
+    align-items: center;
+    .textBig{
+      font-size: 10.5rem;
+      margin-top: -0.17em;
+      font-family: 'SFProBold';
+    }
+    .textSmall{
+      font-size: 2.8rem;
+      margin-top: -0.7em;
+
+    }
+  }
+}

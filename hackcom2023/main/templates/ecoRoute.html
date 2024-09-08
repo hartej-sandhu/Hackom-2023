@@ -1,0 +1,135 @@
+{% extends "bg.html" %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    
+<link rel="stylesheet" href="{% static 'ecoRoute.css' %}">
+    <style>
+        body{
+            height: 100vh;
+        }
+    </style>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyYnxTL6C9vE1jcGMHTmCNB28I7Jti1Lo"></script>
+
+  <br><br><br><br><br>
+  <h1 class="title is-2" style="margin-bottom: 3rem; margin-left: 70px;">Eco-Friendly Route Finder</h1>
+    <p style="margin-left: 70px; width: 90%; text-align: justify; margin-bottom: 3rem; " >
+        The Eco-Friendly Route Finder is designed to make your travel choices more sustainable by prioritizing routes with the least environmental impact. Utilizing real-time data on factors like air quality and traffic, the feature encourages the use of greener modes of transportation such as walking, cycling, or public transit. In doing so, it not only helps you reduce your carbon footprint but also educates you on the benefits of eco-friendly travel, making each journey a step towards a more sustainable future.</p>
+  <div class="mainn" style='margin: 0 70px'>
+
+
+  <!-- Text input for 'from' and 'to' locations -->
+  <div class="mainy" >
+  <div class="field" style="margin-right: 10px;">
+    {% comment %} <label class="label">From</label> {% endcomment %}
+    <div class="control has-icons-left has-icons-right">
+      <input class="input" type="text" placeholder="Starting point" name="username" id="from">
+      <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span>
+    </div>
+    <p class="help is-danger">{{usr}}</p>
+  </div>
+
+  <div class="field">
+    {% comment %} <label class="label">To :</label> {% endcomment %}
+    <div class="control has-icons-left has-icons-right">
+      <input class="input" type="text" placeholder="Destination" name="username" id="to">
+      <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span>
+    </div>
+    <p class="help is-danger">{{usr}}</p>
+  </div>
+
+
+
+  <button onclick="triggerRoute()" class="button is-primary" style=" margin-left: 2rem; ">Find Route</button>
+  <button onclick='openInGoogleMapsEco()' class="button is-primary"style=" margin-left: 1.5rem; " >Open In Maps</button>
+</div>
+  <div  id="map"></div>
+  <div id="instructions"></div>
+</div>
+
+  <script>
+    let map;
+    let directionsService;
+    let directionsRenderer;
+
+    function initializeMap() {
+      directionsService = new google.maps.DirectionsService();
+      directionsRenderer = new google.maps.DirectionsRenderer();
+      const center = new google.maps.LatLng(26.4499, 80.3319); // Initial map center (New York)
+      const mapOptions = {
+        zoom: 13,
+        center: center,
+      };
+      map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      directionsRenderer.setMap(map);
+    }
+
+    // Call initializeMap when the page loads
+    window.onload = initializeMap;
+
+    function calculateAndDisplayRoute(from, to) {
+      const request = {
+        origin: from,
+        destination: to,
+        travelMode: 'DRIVING',
+        // Add any other API options you might need here
+      };
+
+      directionsService.route(request, function(response, status) {
+        if (status === 'OK') {
+          directionsRenderer.setDirections(response);
+          
+          // Extract and display turn-by-turn instructions
+          const steps = response.routes[0].legs[0].steps;
+          let instructions = '';
+          for (let i = 0; i < steps.length; i++) {
+            instructions += `<p>${steps[i].instructions}</p>`;
+          }
+          document.getElementById("instructions").innerHTML = instructions;
+
+        } else {
+          window.alert('Directions request failed due to ' + status);
+        }
+      });
+    }
+
+    // Function to trigger route calculation based on user input
+    function triggerRoute() {
+      const from = document.getElementById("from").value;
+      const to = document.getElementById("to").value;
+      if (from && to) {
+        calculateAndDisplayRoute(from, to);
+      } else {
+        window.alert('Please enter both "from" and "to" locations.');
+      }
+    }
+
+    function openInGoogleMapsEco() {
+        const from = document.getElementById("from").value;
+        const to = document.getElementById("to").value;
+        const mode = 'walking'; // For eco-friendly, we consider walking as default
+        if (from && to) {
+          const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(from)}&destination=${encodeURIComponent(to)}&travelmode=${mode}`;
+          window.open(googleMapsUrl, "_blank");
+        } else {
+          window.alert('Please enter both "from" and "to" locations.');
+        }
+      }
+      
+      
+  </script>
+
+  {% endblock %}

@@ -1,0 +1,29 @@
+{% extends "bg.html" %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+    
+<link rel="stylesheet" href="{% static 'landingpage.css' %}">
+<title>Co-Commute</title>
+
+
+<h1 class="title">Good Morning {{user.first_name}}!</h1>
+	
+	
+
+    <h1 class="title2" >Ready to begin your day? View your upcoming <br> rides in the dashboard!</h1>
+    <h1 class="title3">“With complex, systemic challenges such as climate, there are no individual winners. Collectively addressing carbon impact means we all win, or we all lose.”<br>  — Roger Spitz</h1>
+    <div class="circle"></div>
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <img src="{% static 'blob.png' %}" class="blob">
+    <img src="{% static 'line 4.png' %}" class="line">
+    <img src="{% static 'line 2.png' %}" class="line1">
+    <img src="{% static 'line 2.png' %}" class="line2">
+    <img src="{% static 'line 4.png' %}" class="line3">
+
+{% endblock %}
